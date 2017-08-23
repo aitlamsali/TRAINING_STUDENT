@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'  ?>
+<openerp>
+    <data>
+        <!--Form View of Student -->
+        <record id="view_student_form" model="ir.ui.view">
+            <field name="name">view.student.form</field>
+            <field name = 'model'>"student.student"</field>
+            <field name = 'arch' type="xml">
+                    <from string="Student Information">
+                        <sheet>
+                           <header>
+                               <button name="draft_med" states="draft" string="Medical Interview" class="oe_highlight"/>
+                               <button name="med_acad" states="med_interview" string="Academic Interview" class="oe_highlight"/>
+                               <button name="med_dismiss" states="med_interview" string="Dismiss" class="oe_highlight"/>
+
+                               <button name="acad_first" states="acad_interview" string="First Year Register" class="oe_highlight"/>
+                               <button name="acad_dismiss" states="acad_interview" string="Dismiss" class="oe_highlight"/>
+
+                               <button name="first_second" states="first_register" string="Second Year Register" class="oe_highlight"/>
+                               <button name="first_first" states="first_register" string="First Year Register" class="oe_highlight"/>
+                               <button name="first_dismiss" states="first_register" string="Dismiss" class="oe_highlight"/>
+
+                               <button name="second_third" states="second_register" string="Third Year Register" class="oe_highlight"/>
+                               <button name="second_second" states="second_register" string="Second Year Register" class="oe_highlight"/>
+                               <button name="second_dismiss" states="second_register" string="Dismiss" class="oe_highlight"/>
+
+                               <button name="third_fourth" states="Third_Register" string="Fourth Year Register" class="oe_highlight"/>
+                               <button name="third_third" states="Third_Register" string="Third Year Register" class="oe_highlight"/>
+                               <button name="third_dismiss" states="Third_Register" string="Dismiss" class="oe_highlight"/>
+
+                               <button name="fourth_fourth" states="fourth_register" string="Fourth Year Register" class="oe_highlight"/>
+                               <button name="fourth_allumi" states="fourth_register" string="Allumi" class="oe_highlight"/>
+                               <button name="fourth_dismiss" states="fourth_register" string="Dismiss" class="oe_highlight"/>
+
+                               <button name="set_student_sequence" type="object" string="Generate Seat No" class="oe_highlight"/>
+
+
+
+
+
+
+                           </header>
+
+
+
+
+                        </sheet>
+
+
+
+
+
+                    </from>
+
+
+
+
+
+
+
+
+
+
+
+
+            </field>
+
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+    </data>
+
+</openerp>
