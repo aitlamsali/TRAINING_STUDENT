@@ -26,30 +26,30 @@ class student_student(models.Model):
     age=fields.Integer(string='Age')
     gender=fields.Selection([('male','Male'),('female','Female')], 'Gender', default='male')
 
-    result_ids=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    hobbies_ids=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
+    result_ids=fields.One2Many('schoolresults.detail', 'student_id', 'School Results')
+    hobbies_ids=fields.Many2Many('hobbies.detail', 'student_hobbies_rel', 'student_id', 'hobbie_id', 'Hobbies Information')
 
-    responsible_id=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    email=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    phone=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
+    responsible_id=fields.Many2One('res.partner', 'Responsible Person / NOK')
+    email=fields.Char(related='responsible_id.email')
+    phone=fields.Char(related= 'responsible_id.phone')
 
-    fdate=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    ldate=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
+    fdate=fields.Date(string='First Registration Date')
+    ldate=fields.Char(string='First Registration Date')
 
-    degree_id=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
+    degree_id=fields.Many2One('degree.detail', 'Degree to Register For')
 
-    regfees=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    tutfees=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    totfees=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
+    regfees=fields.Float(string='Registration Fees', default='0.0')
+    tutfees=fields.Float(string='Tuition Fees', default='0.0')
+    totfees=fields.Float(string='Total fees', store=true, readonly=true, compute='')
 
-    ref=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    ref_link=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
+    ref=fields.reference(selection=[('res.partner','Partner'),('res.user','User'),('student.student', 'Student')], string='Reference')
+    ref_link=fields.Char(string='External Link')
 
-    health_issues=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    health_notes=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    template=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
+    health_issues=fields.Selection([('yes','Yes'),('no','No')],string='Health Issues', default='no')
+    health_notes=fields.Text(string='Health Notes', copy=false )
+    template=fields.Html(string='Template')
 
-    state=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
+    state=fields.Selection(STATE, 'Status', readony=true, default='draft')
 
 
 
