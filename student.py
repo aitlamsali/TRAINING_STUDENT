@@ -21,11 +21,10 @@ class student_student(models.Model):
     active =fields.Boolean(string='Active', default=true)
     image=fields.Binary(string='Image')
     uni_no=fields.Char(string='University Number', required=True, copy=false)
-    seat_no=fields.Integer(string='Name', required=True, index=True, copy=false, default=  , store= , compute= , readonly= )
-    dob=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    age=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-    gender=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
-
+    seat_no=fields.Char(string='Seat No', copy=false)
+    dob=fields.Date(string='Date of Birth', required=True)
+    age=fields.Integer(string='Age')
+    gender=fields.Selection([('male','Male'),('female','Female')], 'Gender', default='male')
 
     result_ids=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
     hobbies_ids=fields.Char(string='Name', required=True, index=True, copy=True, default=  , store= , compute= , readonly= )
