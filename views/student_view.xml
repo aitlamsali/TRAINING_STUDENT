@@ -34,7 +34,7 @@
                                 <button name="fourth_dismiss" states="fourth_register" string="Dismiss" class="oe_highlight"/>
 
                                 <button name="set_student_sequence" type="object" string="Generate Seat No" class="oe_highlight"/>
-                                
+
                                 <button name="%(training_student.action_wiz_calc_age)d" type="action" string="" class="oe_highlight"/>
 
                                 <fiels name="state" widget="statusbar" statusbar_visible="draft, med_interview, acad_interview, first_register,

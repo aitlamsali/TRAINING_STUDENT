@@ -52,14 +52,23 @@ class student_student(models.Model):
 
     state=fields.Selection(STATE, 'Status', readony=True, default='draft')
 
+    #Cette methode va generer la sequence en clique du boutton and fetch the sequence
+    #and depend with faculty and department code
+    @api.multi
+    def set_student_sequence(self):
+        for student in self:
+            next_seq = self.env['ir.sequence'].get(student.seatno.sequence)
+                if student.degree_id:
+                    next_seq += ("/" + student.degree_id.dorf_id.code + "/")
+                    next_seq += student.degree_id.dord_id.code
+                else
+                    next_seq = ""
+                    raise Warning(_("Degree to Register For Not Selected"))
+                student.seat_no = next_seq
+        return next_seq
 
-    # def set_student_sequence(self):
-    #     for student in self:
-    #         next_seq = self.env['ir.sequence'].get(student.seatno.sequence)
-    #             if student.degree_id:
-    #                 next_seq += ("/" + student.degree_id.dorf_id.code + "/")
-    #                 next_seq += student.degree_id.dord_id.code
-    #             else
+    #Ovveriding Default get
+
 
 
 
