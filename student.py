@@ -3,14 +3,14 @@ from openerp.exceptions import except_orm, Warning
 from datetime import datetime
 
 STATE = [('draft','Draft'),
-        ('med_interview','Medical Interview'),
-        ('acad_interview','Academic Interview'),
-        ('first_register','First Year Registred'),
-        ('second_register', 'Second Year Registred'),
-        ('third_register', 'Third Year Registred'),
-        ('fourth_register', 'Fourth Year Registred'),
-        ('dismiss', 'Dismissed'),
-        ('allumi','Allumi'),
+         ('med_interview','Medical Interview'),
+         ('acad_interview','Academic Interview'),
+         ('first_register','First Year Registred'),
+         ('second_register', 'Second Year Registred'),
+         ('third_register', 'Third Year Registred'),
+         ('fourth_register', 'Fourth Year Registred'),
+         ('dismiss', 'Dismissed'),
+         ('allumi','Allumi'),
          ]
 
 class student_student(models.Model):
@@ -51,6 +51,16 @@ class student_student(models.Model):
     template=fields.Html(string='Template')
 
     state=fields.Selection(STATE, 'Status', readony=True, default='draft')
+
+
+    # def set_student_sequence(self):
+    #     for student in self:
+    #         next_seq = self.env['ir.sequence'].get(student.seatno.sequence)
+    #             if student.degree_id:
+    #                 next_seq += ("/" + student.degree_id.dorf_id.code + "/")
+    #                 next_seq += student.degree_id.dord_id.code
+    #             else
+
 
 
 
